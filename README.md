@@ -40,9 +40,10 @@ Se necesita implementar un sistema de reservas para un Hotel con los siguientes 
 - Customer:  Guardamos los datos del cliente que quiere realizar las reservas
 - Room: Guardamos los datos de los cuartos(habitaciones)
 - Booking: Guardamos los datos de la reserva como la fecha de ingreso y fecha de salida, también los datos del pago (Se podria realizar en otra tabla, pero por el tiempo se decisidio agregarlo a la tabla booking)
-* Endpoints
-- [Api](http://localhost:8000/api/) : muesta la lista de endpoints habilitados y poder realizar pruebas para eso se utilizo 
 
+## Urls
+- [Api](http://localhost:8000/api/) : muesta la lista de endpoints habilitados y poder realizar pruebas para eso se utilizo 
+- [Admin](http://localhost:8000/admin/) 
 
 ## Observaciones
 * Uno de los factores importantes al analizar el problema, es poder entender la forma de operación y manejo de reservas de un Hotel [Libro](https://www.pearson.com/store/p/check-in-check-out-pearson-new-international-edition-managing-hotel-operations/P100000056832/9781292034355)
