@@ -20,6 +20,8 @@ cd TuGerenteProyecto
 * Instalar los requerimientos
 ```
 pip install -r requirements.txt
+//Dev
+pip install -r requirements.dev.txt
 ```
 * Ejecutar Migraciones
 ```
