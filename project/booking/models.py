@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Q
-from datetime import datetime
+from datetime import datetime 
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 
@@ -20,7 +20,7 @@ class Customer(models.Model):
 
 class RoomQuerySet(models.QuerySet):
     def available_now(self):
-        return self.available_at(now())
+        return self.available_at(datetime.now())
     
     def available_date(self, date: datetime):
         return self.available_at(date)
@@ -33,7 +33,7 @@ class RoomQuerySet(models.QuerySet):
 
         paid_bookings = (
             Booking.objects
-            .filter(state=Booking.State.PAID)
+            .filter(status=Booking.State.PAID)
             .filter(Q(check_in__gte=checkin) | Q(check_out__lte=checkout))
         )
 
