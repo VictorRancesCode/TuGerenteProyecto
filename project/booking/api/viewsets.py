@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from project.booking.models import Customer, Room, Booking
-from .serializers import CustomerSerializer, RoomSerializer, BookingSerializer, BookingPaySerializer
+from .serializers import CustomerSerializer, RoomSerializer, BookingSerializer, BookingPaySerializer, BookingCancelledSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -44,6 +44,17 @@ class BookingViewSet(viewsets.ModelViewSet):
             booking.paid_amount = amount
             booking.payment_type = payment_type
             booking.save()
+            return Response(BookingSerializer(booking).data ,status = 200)
+        except:
+            return Response({'message':'Aplication Error'}, status =400)
+    
+    @action(methods=['post'], detail=True, serializer_class=BookingCancelledSerializer)
+    def canceled(self, request, **kwargs):
+        try: 
+            security = request.data['security']
+            booking = self.get_object()
+            if booking.status == Booking.State.PENDING and security:
+                booking.status = Booking.State.CANCELED
             return Response(BookingSerializer(booking).data ,status = 200)
         except:
             return Response({'message':'Aplication Error'}, status =400)

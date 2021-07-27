@@ -19,5 +19,8 @@ class BookingSerializer(serializers.ModelSerializer):
         read_only_fields = "status", "payment_type", "paid_amount", "updated_at"
 
 class BookingPaySerializer(serializers.Serializer):
-    amount = serializers.IntegerField()
-    payment_type = serializers.ChoiceField(choices=Booking.PaymentType)
+    amount = serializers.IntegerField(required=True)
+    payment_type = serializers.ChoiceField(choices=Booking.PaymentType, required=True)
+
+class BookingCancelledSerializer(serializers.Serializer):
+    security = serializers.BooleanField(default=False)
