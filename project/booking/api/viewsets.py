@@ -37,11 +37,13 @@ class BookingViewSet(viewsets.ModelViewSet):
 
     @action(methods=['post'], detail=True, serializer_class=BookingPaySerializer)
     def pay(self, request, **kwargs):
-        try:
+        try: 
             amount = request.data['amount']
+            payment_type = request.data['payment_type']
             booking = self.get_object()
             booking.paid_amount = amount
+            booking.payment_type = payment_type
             booking.save()
-            return Response(BookingSerializer(booking),status = 200)
+            return Response(BookingSerializer(booking).data ,status = 200)
         except:
             return Response({'message':'Aplication Error'}, status =400)
