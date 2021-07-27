@@ -1,1 +1,1 @@
-web: gunicorn tu-gerente-booking.wsgi --log-file -
+web: gunicorn project.wsgi --log-file -
